@@ -8,28 +8,48 @@ let loadInterval
 
 function loader(element) {
     element.textContent = ''
-
+    const LoadName = ["Z", " ", "a", " ", "i", " ", "d", " ", ".", " ", ".", " ", ".", " ", "."];
+    let index = 0;
     loadInterval = setInterval(() => {
-        // Update the text content of the loading indicator
-        element.textContent += '.';
+        element.textContent += LoadName[index++];
 
-        // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
+
+        if (element.textContent === 'Z a i d . . . .') {
             element.textContent = '';
+            index = 0;
         }
-    }, 300);
+    }, 90);
 }
 
+var targetDiv = document.querySelector("#chat_container");
+
+
+
+
+
+
 function typeText(element, text) {
-    let index = 0
+    let index = 0;
 
     let interval = setInterval(() => {
-        if (index < text.length) {
-            element.innerHTML += text.charAt(index)
-            index++
-        } else {
-            clearInterval(interval)
-        }
+
+        // if (index < text.length) {
+        element.innerHTML += text.charAt(index)
+        index++;
+
+        // targetDiv.scrollTop = targetDiv.scrollHeight;
+        // window.onscroll = function() {
+        //     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        //         document.getElementById("targetDiv").scrollIntoView(false);
+        //     }
+        // };
+
+
+        //} else {
+        clearInterval(interval);
+        // }
+
+
     }, 20)
 }
 
@@ -107,7 +127,7 @@ const handleSubmit = async(e) => {
     } else {
         const err = await response.text()
 
-        messageDiv.innerHTML = "Something went wrong"
+        messageDiv.innerHTML = "Zaid: Something went wrong 😢"
         alert(err)
     }
 }
